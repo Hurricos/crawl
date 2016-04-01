@@ -1051,12 +1051,8 @@ static void _get_spell_list(vector<spell_type> &spells, int level,
         {
             // themed randart: only include spells of the given disciplines
             const spschools_type disciplines = get_spell_disciplines(spell);
-            if ((!(disciplines & disc1) && !(disciplines & disc2))
-                 || disciplines_conflict(disc1, disciplines)
-                 || disciplines_conflict(disc2, disciplines))
-            {
+            if (!(disciplines & disc1) && !(disciplines & disc2))
                 continue;
-            }
         }
 
         if (avoid_uncastable && !you_can_memorise(spell))
@@ -1408,15 +1404,8 @@ static bool _get_weighted_discs(bool completely_random, god_type god,
             skill_weights[i] = 1;
     }
 
-    do
-    {
-        disc1 = ok_discs[choose_random_weighted(skill_weights,
-                                                end(skill_weights))];
-        disc2 = ok_discs[choose_random_weighted(skill_weights,
-                                                end(skill_weights))];
-    }
-    while (disciplines_conflict(disc1, disc2));
-
+    disc1 = ok_discs[choose_random_weighted(skill_weights, end(skill_weights))];
+    disc2 = ok_discs[choose_random_weighted(skill_weights, end(skill_weights))];
     return true;
 }
 
@@ -1458,8 +1447,6 @@ static bool _get_weighted_spells(bool completely_random, god_type god,
             int c = 1;
             if (!you.seen_spell[spell])
                 c = 4;
-            else if (!you.has_spell(spell))
-                c = 2;
 
             int total_skill = 0;
             int num_skills  = 0;
@@ -1525,34 +1512,20 @@ static bool _get_weighted_spells(bool completely_random, god_type god,
     return book_pos > 0;
 }
 
+/// Remove all spells from the given list that do not include either of
+/// the given disciplines.
 static void _remove_nondiscipline_spells(spell_type chosen_spells[],
                                          spschool_flag_type d1,
-                                         spschool_flag_type d2,
-                                         spell_type exclude = SPELL_NO_SPELL)
+                                         spschool_flag_type d2)
 {
-    int replace = -1;
     for (int i = 0; i < RANDBOOK_SIZE; i++)
     {
-        if (chosen_spells[i] == SPELL_NO_SPELL)
-            break;
-
-        if (chosen_spells[i] == exclude)
-            continue;
-
-        // If a spell matches neither the first nor the second type
-        // (that may be the same) remove it.
-        if (!spell_typematch(chosen_spells[i], d1)
-            && !spell_typematch(chosen_spells[i], d2))
+        const spell_type spell = chosen_spells[i];
+        if (spell != SPELL_NO_SPELL
+            && !spell_typematch(spell, d1)
+            && !spell_typematch(spell, d2))
         {
             chosen_spells[i] = SPELL_NO_SPELL;
-            if (replace == -1)
-                replace = i;
-        }
-        else if (replace != -1)
-        {
-            chosen_spells[replace] = chosen_spells[i];
-            chosen_spells[i] = SPELL_NO_SPELL;
-            replace++;
         }
     }
 }
@@ -1697,12 +1670,10 @@ static string _gen_randbook_name(string subject, string owner,
  * @param disc1         A spellschool (discipline) associated with the book.
  * @param disc2         A spellschool (discipline) associated with the book.
  * @param highlevel     Whether the book contains "high-level" spells.
- * @param all_spells_disc1      Are all spells in the book of the same school?
  * @return              The name of the book's 'owner', or the empty string.
  */
 static string _gen_randbook_owner(god_type god, spschool_flag_type disc1,
-                                  spschool_flag_type disc2, bool highlevel,
-                                  bool all_spells_disc1)
+                                  spschool_flag_type disc2, bool highlevel)
 {
     // If the owner hasn't been set already use
     // a) the god's name for god gifts (only applies to Sif Muna and Xom),
@@ -1729,8 +1700,7 @@ static string _gen_randbook_owner(god_type god, spschool_flag_type disc1,
                 lookups.push_back("highlevel " + lookup + " owner");
             lookups.push_back(lookup + " owner");
         }
-
-        if (all_spells_disc1)
+        else
         {
             if (highlevel)
                 lookups.push_back("highlevel " + d1_name + " owner");
@@ -1755,11 +1725,11 @@ static string _gen_randbook_owner(god_type god, spschool_flag_type disc1,
         switch (disc1)
         {
             case SPTYP_NECROMANCY:
-                if (all_spells_disc1 && !one_chance_in(6))
+                if (disc1 == disc2 && !one_chance_in(6))
                     return god_name(GOD_KIKUBAAQUDGHA, false);
                 break;
             case SPTYP_CONJURATION:
-                if (all_spells_disc1 && !one_chance_in(4))
+                if (disc1 == disc2 && !one_chance_in(4))
                     return god_name(GOD_VEHUMET, false);
                 break;
             default:
@@ -1833,7 +1803,7 @@ bool make_book_theme_randart(item_def &book,
     ASSERT(count_bits(disc2) == 1);
 
     book.sub_type = BOOK_RANDART_THEME;
-    _make_book_randart(book);   // NOTE: have any spells been set here?
+    _make_book_randart(book);
 
     int god_discard        = 0;
     int uncastable_discard = 0;
@@ -1933,8 +1903,7 @@ bool make_book_theme_randart(item_def &book,
     _add_included_spells(chosen_spells, incl_spells);
 
     // Resort spells.
-    if (!incl_spells.empty())
-        sort(chosen_spells, chosen_spells + RANDBOOK_SIZE, _compare_spells);
+    sort(chosen_spells, chosen_spells + RANDBOOK_SIZE, _compare_spells);
     ASSERT(chosen_spells[0] != SPELL_NO_SPELL);
 
     int highest_level = 0;
@@ -1968,8 +1937,7 @@ bool make_book_theme_randart(item_def &book,
         const bool highlevel = (highest_level >= 7 + random2(3)
                                 && (lowest_level > 1 || coinflip()));
 
-        owner = _gen_randbook_owner(god, disc1, disc2, highlevel,
-                                    all_spells_disc1);
+        owner = _gen_randbook_owner(god, disc1, disc2, highlevel);
     }
 
     book.props[BOOK_TITLED_KEY].get_bool() = !owner.empty();
