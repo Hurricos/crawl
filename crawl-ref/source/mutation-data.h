@@ -823,7 +823,7 @@ static const mutation_def mut_data[] =
   "a beak",
 },
 
-{ MUT_CLAWS, 2, 3, mutflag::GOOD, true,
+{ MUT_CLAWS, 2, 3, mutflag::GOOD | mutflag::BEAST, true,
   "claws",
 
   {"You have sharp fingernails.",
@@ -841,7 +841,7 @@ static const mutation_def mut_data[] =
    "claws",
 },
 
-{ MUT_FANGS, 1, 3, mutflag::GOOD, true,
+{ MUT_FANGS, 1, 3, mutflag::GOOD | mutflag::BEAST, true,
   "fangs",
 
   {"You have very sharp teeth.",
@@ -859,7 +859,7 @@ static const mutation_def mut_data[] =
    "fangs",
 },
 
-{ MUT_HOOVES, 5, 3, mutflag::GOOD, true,
+{ MUT_HOOVES, 5, 3, mutflag::GOOD | mutflag::BEAST, true,
   "hooves",
 
   {"You have large cloven feet.",
@@ -895,7 +895,7 @@ static const mutation_def mut_data[] =
    "antennae",
 },
 
-{ MUT_TALONS, 5, 3, mutflag::GOOD, true,
+{ MUT_TALONS, 5, 3, mutflag::GOOD | mutflag::BEAST, true,
   "talons",
 
   {"You have sharp toenails.",
@@ -1003,6 +1003,16 @@ static const mutation_def mut_data[] =
 
 #endif
 // species-dependent innate mutations
+{ MUT_BESTIAL_EXPRESSION, 0, 1, mutflag::GOOD, false,
+  "beastly",
+
+  {"Your genetic history directs how mutation affects you.", "", ""},
+  {"You feel a beastly force take hold of your body!", "", ""},
+  {"The beast inside you slowly vanishes.", "", ""},
+
+  "bestial ancestry",
+},
+
 { MUT_ROT_IMMUNITY, 0, 1, mutflag::GOOD, false,
   "rot immunity",
 

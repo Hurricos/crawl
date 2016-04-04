@@ -667,6 +667,7 @@ static const map<species_type, species_def> species_data =
     HT_LAND, US_ALIVE, SIZE_LARGE,
     15, 4, 5, // 24
     { STAT_STR }, 3,
+
     { { MUT_TOUGH_SKIN, 2, 1 }, { MUT_REGENERATION, 2, 1 }, { MUT_CLAWS, 3, 1 },
       { MUT_GOURMAND, 1, 1 }, { MUT_FAST_METABOLISM, 3, 1 },
       { MUT_SHAGGY_FUR, 1, 1 }, },
@@ -718,6 +719,27 @@ static const map<species_type, species_def> species_data =
       JOB_AIR_ELEMENTALIST, JOB_ICE_ELEMENTALIST },
     { SK_MACES_FLAILS, SK_AXES, SK_POLEARMS, SK_LONG_BLADES, SK_STAVES,
       SK_BOWS, SK_CROSSBOWS, SK_SLINGS },
+} },
+
+{ SP_SIMIAN, {
+    "Si",
+    "Simian", "Monkey", "Monkey",
+    SPF_NONE,
+    0, -2, 1,
+    15, 4,
+    MONS_HUMAN,
+    HT_LAND, US_ALIVE, SIZE_MEDIUM,
+    8, 7, 12, // 27
+    { STAT_STR, STAT_INT, STAT_DEX }, 3,
+    { { MUT_SHAGGY_FUR, 1, 1 }, { MUT_SHAGGY_FUR, 1, 6 },
+      { MUT_SHAGGY_FUR, 1, 12 }, { MUT_BESTIAL_EXPRESSION, 1, 1 },
+      { MUT_FAST, 1, 1 }, },
+    {},
+    {},
+    { JOB_MONK, JOB_CHAOS_KNIGHT, JOB_TRANSMUTER, JOB_AIR_ELEMENTALIST, JOB_ICE_ELEMENTALIST,
+      JOB_EARTH_ELEMENTALIST, JOB_FIRE_ELEMENTALIST, JOB_VENOM_MAGE, JOB_BERSERKER,  },
+    { SK_MACES_FLAILS, SK_SHORT_BLADES, SK_STAVES, SK_UNARMED_COMBAT,
+      SK_CROSSBOWS },
 } },
 #if TAG_MAJOR_VERSION == 34
 { SP_SLUDGE_ELF, {

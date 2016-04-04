@@ -106,6 +106,13 @@ Ogre
 Large and strong, Ogres are mostly seen as brutes. They are very comfortable
 with the basics of magic, however.
 %%%%
+Simian
+
+Extremely agile and fast on their feet, Simians are the intelligent descendents
+of the apes. Though they have weakened in their wisening as Humans have, their
+mastery of Unarmed Combat is unmatched, and their genetic history even influences
+how they mutate ...
+%%%%
 Spriggan
 
 Very small, very frail and very fast, Spriggans make highly competent stabbers
