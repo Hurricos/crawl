@@ -667,7 +667,8 @@ static void _hydra_consider_devouring(monster &defender)
  */
 bool melee_attack::handle_phase_killed()
 {
-    if (attacker->is_player() && you.form == TRAN_HYDRA
+    if (((attacker->is_player() && you.form == TRAN_HYDRA)
+          || you.species == SP_SHADOW_GIANT)
         && defender->is_monster() // better safe than sorry
         && defender->type != MONS_NO_MONSTER) // already reset
     {

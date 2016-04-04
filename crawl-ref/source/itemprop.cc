@@ -71,7 +71,7 @@ static const armour_def Armour_prop[] =
     { ARM_ANIMAL_SKIN,          "animal skin",            2,   0,
         EQ_BODY_ARMOUR, SIZE_LITTLE, SIZE_GIANT, true, ARMF_NO_FLAGS, 333 },
     { ARM_ROBE,                 "robe",                   2,   0,
-        EQ_BODY_ARMOUR, SIZE_LITTLE, SIZE_BIG, true, ARMF_NO_FLAGS, 1000 },
+        EQ_BODY_ARMOUR, SIZE_LITTLE, SIZE_GIANT, true, ARMF_NO_FLAGS, 1000 },
     { ARM_LEATHER_ARMOUR,       "leather armour",         3,  -40,
         EQ_BODY_ARMOUR, SIZE_SMALL,  SIZE_MEDIUM, true },
 
@@ -127,7 +127,7 @@ static const armour_def Armour_prop[] =
 #undef HIDE_ARMOUR
 
     { ARM_CLOAK,                "cloak",                  1,   0,
-        EQ_CLOAK,       SIZE_LITTLE, SIZE_BIG, true },
+        EQ_CLOAK,       SIZE_LITTLE, SIZE_GIANT, true },
     { ARM_GLOVES,               "gloves",                 1,   0,
         EQ_GLOVES,      SIZE_SMALL,  SIZE_MEDIUM, true },
 
@@ -140,7 +140,7 @@ static const armour_def Armour_prop[] =
 #endif
 
     { ARM_HAT,                  "hat",                    0,   0,
-        EQ_HELMET,      SIZE_TINY, SIZE_LARGE, true },
+        EQ_HELMET,      SIZE_TINY, SIZE_GIANT, true },
 
     // Note that barding size is compared against torso so it currently
     // needs to fit medium, but that doesn't matter as much as race
@@ -445,7 +445,7 @@ static const weapon_def Weapon_prop[] =
         SK_LONG_BLADES,  SIZE_LITTLE,  SIZE_MEDIUM, MI_NONE,
         DAMV_SLICING, 0, 2, LBL_BRANDS },
     { WPN_GREAT_SWORD,           "great sword",           16, -3, 16,
-        SK_LONG_BLADES,  SIZE_MEDIUM,  NUM_SIZE_LEVELS,  MI_NONE,
+        SK_LONG_BLADES,  SIZE_MEDIUM,  SIZE_BIG,  MI_NONE,
         DAMV_SLICING, 6, 10, LBL_BRANDS },
     { WPN_TRIPLE_SWORD,          "triple sword",          19, -4, 19,
         SK_LONG_BLADES,  SIZE_MEDIUM,  NUM_SIZE_LEVELS,  MI_NONE,
@@ -482,7 +482,7 @@ static const weapon_def Weapon_prop[] =
         SK_AXES,       SIZE_LITTLE,  SIZE_MEDIUM, MI_NONE,
         DAMV_CHOPPING, 4, 10, AXE_BRANDS },
     { WPN_BATTLEAXE,         "battleaxe",          15, -4, 17,
-        SK_AXES,       SIZE_MEDIUM, NUM_SIZE_LEVELS, MI_NONE,
+        SK_AXES,       SIZE_MEDIUM, SIZE_BIG, MI_NONE,
         DAMV_CHOPPING, 6, 10, AXE_BRANDS },
     { WPN_EXECUTIONERS_AXE,  "executioner's axe",  18, -6, 20,
         SK_AXES,       SIZE_MEDIUM, NUM_SIZE_LEVELS, MI_NONE,
@@ -506,10 +506,10 @@ static const weapon_def Weapon_prop[] =
         SK_POLEARMS,     SIZE_LITTLE,  SIZE_MEDIUM, MI_NONE,
         DAMV_PIERCING, 6, 10, POLEARM_BRANDS },
     { WPN_HALBERD,           "halberd",            13, -3, 15,
-        SK_POLEARMS,     SIZE_MEDIUM,  NUM_SIZE_LEVELS,  MI_NONE,
+        SK_POLEARMS,     SIZE_MEDIUM,  SIZE_BIG,  MI_NONE,
         DAMV_CHOPPING | DAM_PIERCE, 5, 10, POLEARM_BRANDS },
     { WPN_SCYTHE,            "scythe",             14, -4, 20,
-        SK_POLEARMS,     SIZE_MEDIUM,  NUM_SIZE_LEVELS,  MI_NONE,
+        SK_POLEARMS,     SIZE_MEDIUM,  SIZE_BIG,  MI_NONE,
         DAMV_SLICING, 2, 0, POLEARM_BRANDS },
     { WPN_DEMON_TRIDENT,     "demon trident",      12,  1, 13,
         SK_POLEARMS,     SIZE_LITTLE,    SIZE_MEDIUM, MI_NONE,
@@ -518,7 +518,7 @@ static const weapon_def Weapon_prop[] =
         SK_POLEARMS,     SIZE_LITTLE,    SIZE_MEDIUM, MI_NONE,
         DAMV_PIERCING, 0, 0, HOLY_BRANDS },
     { WPN_GLAIVE,            "glaive",             15, -3, 17,
-        SK_POLEARMS,     SIZE_MEDIUM,    NUM_SIZE_LEVELS,  MI_NONE,
+        SK_POLEARMS,     SIZE_MEDIUM,    SIZE_BIG,  MI_NONE,
         DAMV_CHOPPING, 5, 10, POLEARM_BRANDS },
     { WPN_BARDICHE,          "bardiche",           18, -6, 20,
         SK_POLEARMS,     SIZE_MEDIUM,    NUM_SIZE_LEVELS,  MI_NONE,

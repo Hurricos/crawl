@@ -111,6 +111,11 @@ Spriggan
 Very small, very frail and very fast, Spriggans make highly competent stabbers
 and spellcasters.
 %%%%
+Shadow Giant
+
+The Ice Giant's cave-dwelling cousin.  Also known as a Grue, a Shadow Giant
+stands even taller than an Ogre.
+%%%%
 Troll
 
 Trolls are large brutes with powerful claws, always hungering for raw meat.

@@ -63,6 +63,7 @@ naga_red_f
 naga_red_m
 ogre_m OGRE
 ogre_f
+shadow_giant_m SHADOW_GIANT
 troll_f TROLL
 troll_m
 octopode1 OCTOPODE

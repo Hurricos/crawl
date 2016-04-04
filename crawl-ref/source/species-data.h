@@ -618,6 +618,28 @@ static const map<species_type, species_def> species_data =
       SK_BOWS, SK_CROSSBOWS, SK_SLINGS },
 } },
 
+{ SP_SHADOW_GIANT, {
+    "SG",
+    "Shadow Giant", "Gruan", "Giant",
+    SPF_NONE,
+    -2, 5, 1,
+    15, 5,
+    MONS_VAMPIRE,
+    HT_LAND, US_ALIVE, SIZE_GIANT,
+    10, 10, 8, // 28
+    { STAT_STR, STAT_INT, STAT_DEX }, 3,
+    { { MUT_FANGS, 3, 1 }, { MUT_ACUTE_VISION, 1, 1 },
+      { MUT_COLD_RESISTANCE, 1, 1 }, { MUT_NEGATIVE_ENERGY_RESISTANCE, 1, 1 }, 
+      { MUT_HEAT_VULNERABILITY, 1, 1 }, { MUT_NIGHTSTALKER, 3, 1},
+      { MUT_GOURMAND, 1, 1 }, },
+    {},
+    {},
+    { JOB_MONK, JOB_ASSASSIN, JOB_ENCHANTER, JOB_EARTH_ELEMENTALIST,
+      JOB_NECROMANCER, JOB_ICE_ELEMENTALIST },
+    { SK_SHORT_BLADES, SK_AXES, SK_LONG_BLADES, SK_BOWS, SK_CROSSBOWS,
+      SK_SLINGS },
+} },
+
 { SP_SPRIGGAN, {
     "Sp",
     "Spriggan", nullptr, nullptr,
@@ -719,6 +741,7 @@ static const map<species_type, species_def> species_data =
     { SK_MACES_FLAILS, SK_AXES, SK_POLEARMS, SK_LONG_BLADES, SK_STAVES,
       SK_BOWS, SK_CROSSBOWS, SK_SLINGS },
 } },
+
 #if TAG_MAJOR_VERSION == 34
 { SP_SLUDGE_ELF, {
     "SE",
