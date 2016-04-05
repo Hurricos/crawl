@@ -616,7 +616,7 @@ static void _consider_devouring(monster &defender)
     dprf("considering devouring");
 
     // no food for the foodless
-    if (you.foodless())
+    if (you_foodless())
         return;
 
     dprf("eating ok");
