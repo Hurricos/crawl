@@ -159,7 +159,7 @@ static const armour_def Armour_prop[] =
     { ARM_BUCKLER,              "buckler",                3,  -8,
         EQ_SHIELD,      SIZE_LITTLE, SIZE_MEDIUM, true },
     { ARM_SHIELD,               "shield",                 8,  -30,
-        EQ_SHIELD,      SIZE_SMALL,  SIZE_BIG, true    },
+        EQ_SHIELD,      SIZE_SMALL,  SIZE_GIANT, true    },
     { ARM_LARGE_SHIELD,         "large shield",          13,  -50,
         EQ_SHIELD,      SIZE_MEDIUM, SIZE_GIANT, true  },
 };
