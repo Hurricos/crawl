@@ -165,7 +165,6 @@ struct monster_info_base
     string mname;
     monster_type type;
     monster_type base_type;
-    monster_type draco_type;
     union
     {
         // These must all be the same size!
@@ -259,7 +258,6 @@ struct monster_info : public monster_info_base
         short damage;
         short ac;
         monster_type acting_part;
-        bool can_sinv;
     } i_ghost;
 
     inline bool is(unsigned mbflag) const
@@ -296,10 +294,7 @@ struct monster_info : public monster_info_base
 
     string constriction_description() const;
 
-    monster_type draco_or_demonspawn_subspecies() const
-    {
-        return draco_type;
-    }
+    monster_type draco_or_demonspawn_subspecies() const;
 
     mon_intel_type intel() const
     {

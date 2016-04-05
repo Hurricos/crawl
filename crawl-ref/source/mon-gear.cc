@@ -15,7 +15,7 @@
 #include "itemprop.h"
 #include "items.h"
 #include "mon-place.h"
-#include "spl-book.h"
+#include "randbook.h" // roxanne, roxanne...
 #include "state.h"
 #include "tilepick.h"
 #include "unwind.h"
@@ -136,8 +136,8 @@ static void _give_wand(monster* mon, int level)
     // Don't give top-tier wands before 5 HD, except to Ijyb and not in sprint.
     const bool no_high_tier =
             (mon->get_experience_level() < 5
-            || mons_class_flag(mon->type, M_NO_HT_WAND))
-                && (mon->type != MONS_IJYB || crawl_state.game_is_sprint());
+                || mons_class_flag(mon->type, M_NO_HT_WAND))
+            && (mon->type != MONS_IJYB || crawl_state.game_is_sprint());
 
     const int idx = items(false, OBJ_WANDS, OBJ_RANDOM, level);
 

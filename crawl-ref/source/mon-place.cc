@@ -2156,7 +2156,7 @@ static const map<monster_type, band_set> bands_by_leader = {
     { MONS_FIRE_BAT,        { {}, {{ BAND_FIRE_BATS, {1, 4} }}}},
     { MONS_DEEP_TROLL_EARTH_MAGE, { {}, {{ BAND_DEEP_TROLLS, {3, 6} }}}},
     { MONS_DEEP_TROLL_SHAMAN, { {}, {{ BAND_DEEP_TROLL_SHAMAN, {3, 6} }}}},
-    { MONS_HELL_HOG,        { {}, {{ BAND_HELL_HOGS, {1, 4} }}}},
+    { MONS_HELL_HOG,        { {}, {{ BAND_HELL_HOGS, {2, 4} }}}},
     { MONS_BOGGART,         { {}, {{ BAND_BOGGARTS, {2, 5} }}}},
     { MONS_PRINCE_RIBBIT,   { {}, {{ BAND_BLINK_FROGS, {2, 5}, true }}}},
     { MONS_BLINK_FROG,      { {}, {{ BAND_BLINK_FROGS, {2, 5} }}}},
@@ -3439,46 +3439,6 @@ monster_type summon_any_demon(monster_type dct, bool use_local_demons)
     default:
         return dct;
     }
-}
-
-monster_type summon_any_dragon(dragon_class_type dct)
-{
-    monster_type mon = MONS_PROGRAM_BUG;
-
-    switch (dct)
-    {
-    case DRAGON_LIZARD:
-        mon = random_choose_weighted(
-            5, MONS_SWAMP_DRAKE,
-            5, MONS_KOMODO_DRAGON,
-            5, MONS_WIND_DRAKE,
-            6, MONS_RIME_DRAKE,
-            6, MONS_DEATH_DRAKE,
-            3, MONS_DRAGON, // genus, to reroll for DRAGON_DRAGON
-            0);
-        break;
-
-    case DRAGON_DRACONIAN:
-        mon = random_draconian_monster_species();
-        break;
-
-    case DRAGON_DRAGON:
-        mon = random_choose(
-            MONS_MOTTLED_DRAGON,
-            MONS_LINDWURM,
-            MONS_STORM_DRAGON,
-            MONS_STEAM_DRAGON,
-            MONS_FIRE_DRAGON,
-            MONS_ICE_DRAGON,
-            MONS_SWAMP_DRAGON,
-            MONS_SHADOW_DRAGON);
-        break;
-
-    default:
-        break;
-    }
-
-    return mon;
 }
 
 /////////////////////////////////////////////////////////////////////////////
