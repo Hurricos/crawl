@@ -113,16 +113,16 @@ of the apes. Though they have weakened in their wisening as Humans have, their
 mastery of Unarmed Combat is unmatched, and their genetic history even influences
 how they mutate ...
 %%%%
-Spriggan
-
-Very small, very frail and very fast, Spriggans make highly competent stabbers
-and spellcasters.
-%%%%
 Shadow Giant
 
 The Ice Giant's cave-dwelling cousin. Also known as a Grue, a Shadow Giant
 stands even taller than an Ogre. They are competent casters and masters
 of the dark arts, and are one with the shadows, but learn as slowly as Demigods.
+%%%%
+Spriggan
+
+Very small, very frail and very fast, Spriggans make highly competent stabbers
+and spellcasters.
 %%%%
 Troll
 
