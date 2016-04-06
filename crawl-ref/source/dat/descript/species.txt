@@ -120,8 +120,9 @@ and spellcasters.
 %%%%
 Shadow Giant
 
-The Ice Giant's cave-dwelling cousin.  Also known as a Grue, a Shadow Giant
-stands even taller than an Ogre.
+The Ice Giant's cave-dwelling cousin. Also known as a Grue, a Shadow Giant
+stands even taller than an Ogre. They are competent casters and masters
+of the dark arts, and are one with the shadows, but learn as slowly as Demigods.
 %%%%
 Troll
 

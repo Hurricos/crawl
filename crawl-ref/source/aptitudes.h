@@ -1523,7 +1523,7 @@ static const species_skill_aptitude species_skill_aptitudes[] =
     APT(SP_SIMIAN,          SK_POISON_MAGIC,    1),
     APT(SP_SIMIAN,          SK_INVOCATIONS,     1),
     APT(SP_SIMIAN,          SK_EVOCATIONS,      0),
-    
+
     // SP_SHADOW_GIANT
     APT(SP_SHADOW_GIANT,    SK_FIGHTING,        1),
     APT(SP_SHADOW_GIANT,    SK_SHORT_BLADES,   -2),
