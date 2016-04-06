@@ -1486,16 +1486,16 @@ static const species_skill_aptitude species_skill_aptitudes[] =
     APT(SP_VINE_STALKER,    SK_EVOCATIONS,     -1),
 
     // SP_SIMIAN
-    APT(SP_SIMIAN,          SK_FIGHTING,        1),
+    APT(SP_SIMIAN,          SK_FIGHTING,        0),
     APT(SP_SIMIAN,          SK_SHORT_BLADES,    0),
-    APT(SP_SIMIAN,          SK_LONG_BLADES,    -1),
+    APT(SP_SIMIAN,          SK_LONG_BLADES,     0),
     APT(SP_SIMIAN,          SK_AXES,           -1),
     APT(SP_SIMIAN,          SK_MACES_FLAILS,    1),
     APT(SP_SIMIAN,          SK_POLEARMS,       -1),
     APT(SP_SIMIAN,          SK_STAVES,          1),
     APT(SP_SIMIAN,          SK_SLINGS,         -1),
     APT(SP_SIMIAN,          SK_BOWS,           -1),
-    APT(SP_SIMIAN,          SK_CROSSBOWS,       0),
+    APT(SP_SIMIAN,          SK_CROSSBOWS,      -1),
     APT(SP_SIMIAN,          SK_THROWING,       -1),
     APT(SP_SIMIAN,          SK_ARMOUR,         -2),
     APT(SP_SIMIAN,          SK_DODGING,         2),
@@ -1509,7 +1509,7 @@ static const species_skill_aptitude species_skill_aptitudes[] =
 #endif
     APT(SP_SIMIAN,          SK_UNARMED_COMBAT,  2),
     APT(SP_SIMIAN,          SK_SPELLCASTING,   -1),
-    APT(SP_SIMIAN,          SK_CONJURATIONS,   -2),
+    APT(SP_SIMIAN,          SK_CONJURATIONS,   -1),
     APT(SP_SIMIAN,          SK_HEXES,           0),
     APT(SP_SIMIAN,          SK_CHARMS,          0),
     APT(SP_SIMIAN,          SK_SUMMONINGS,     -1),
@@ -1528,7 +1528,7 @@ static const species_skill_aptitude species_skill_aptitudes[] =
     APT(SP_SHADOW_GIANT,    SK_FIGHTING,        1),
     APT(SP_SHADOW_GIANT,    SK_SHORT_BLADES,   -2),
     APT(SP_SHADOW_GIANT,    SK_LONG_BLADES,     0),
-    APT(SP_SHADOW_GIANT,    SK_AXES,            2),
+    APT(SP_SHADOW_GIANT,    SK_AXES,            1),
     APT(SP_SHADOW_GIANT,    SK_MACES_FLAILS,    1),
     APT(SP_SHADOW_GIANT,    SK_POLEARMS,        1),
     APT(SP_SHADOW_GIANT,    SK_STAVES,          2),
@@ -1552,8 +1552,8 @@ static const species_skill_aptitude species_skill_aptitudes[] =
     APT(SP_SHADOW_GIANT,    SK_HEXES,           1),
     APT(SP_SHADOW_GIANT,    SK_CHARMS,          1),
     APT(SP_SHADOW_GIANT,    SK_SUMMONINGS,      1),
-    APT(SP_SHADOW_GIANT,    SK_NECROMANCY,      1),
-    APT(SP_SHADOW_GIANT,    SK_TRANSLOCATIONS,  1),
+    APT(SP_SHADOW_GIANT,    SK_NECROMANCY,      3),
+    APT(SP_SHADOW_GIANT,    SK_TRANSLOCATIONS, -1),
     APT(SP_SHADOW_GIANT,    SK_TRANSMUTATIONS,  1),
     APT(SP_SHADOW_GIANT,    SK_FIRE_MAGIC,     -3),
     APT(SP_SHADOW_GIANT,    SK_ICE_MAGIC,       2),
@@ -1561,7 +1561,7 @@ static const species_skill_aptitude species_skill_aptitudes[] =
     APT(SP_SHADOW_GIANT,    SK_EARTH_MAGIC,     1),
     APT(SP_SHADOW_GIANT,    SK_POISON_MAGIC,    1),
     APT(SP_SHADOW_GIANT,    SK_INVOCATIONS,     1),
-    APT(SP_SHADOW_GIANT,    SK_EVOCATIONS,     -1),
+    APT(SP_SHADOW_GIANT,    SK_EVOCATIONS,      0),
 };
 
 #endif
