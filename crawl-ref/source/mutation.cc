@@ -869,7 +869,7 @@ static mutation_type _get_random_xom_mutation()
 
 static mutation_type _get_random_beastly_mutation()
 {
-    return x_chance_in_y(1, 2) ? MUT_CLAWS : _get_mut_with_use(mutflag::BEAST);
+    return coinflip() ? MUT_CLAWS : _get_mut_with_use(mutflag::BEAST);
 }
 
 static mutation_type _get_random_qazlal_mutation()
@@ -1322,15 +1322,7 @@ bool mutate(mutation_type which_mutation, const string &reason, bool failMsg,
     case RANDOM_GOOD_MUTATION:
     case RANDOM_BAD_MUTATION:
     case RANDOM_CORRUPT_MUTATION:
-        // (Simian) bestial expression.
-        if (player_mutation_level(MUT_BESTIAL_EXPRESSION, false)
-            && x_chance_in_y(1, 2)
-            && mutclass == MUTCLASS_NORMAL)
-        {
-            mutat = _get_random_beastly_mutation();
-        }
-        else
-            mutat = _get_random_mutation(which_mutation);
+        mutat = _get_random_mutation(which_mutation);
         break;
     case RANDOM_XOM_MUTATION:
         mutat = _get_random_xom_mutation();
@@ -1343,6 +1335,15 @@ bool mutate(mutation_type which_mutation, const string &reason, bool failMsg,
         break;
     default:
         break;
+    }
+
+
+    // (Simian) bestial expression.
+    if (player_mutation_level(MUT_BESTIAL_EXPRESSION, false)
+        && mutclass == MUTCLASS_NORMAL
+        && conflip())
+    {
+        mutat = _get_random_beastly_mutation();
     }
 
     if (!_is_valid_mutation(mutat))
