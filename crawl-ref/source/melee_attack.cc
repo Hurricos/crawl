@@ -554,7 +554,7 @@ bool melee_attack::handle_phase_aux()
  *
  * @param defender  The monster in question.
  */
-static void _hydra_devour(monster &victim)
+static void _devour(monster &victim)
 {
     // what's the highest hunger level this lets the player get to?
     const hunger_state_t max_hunger =
@@ -609,11 +609,17 @@ static void _hydra_devour(monster &victim)
  *
  * @param defender  The defender in question.
  */
-static void _hydra_consider_devouring(monster &defender)
+static void _consider_devouring(monster &defender)
 {
     ASSERT(!crawl_state.game_is_arena());
 
     dprf("considering devouring");
+
+    // no food for the foodless
+    if (you_foodless())
+        return;
+
+    dprf("eating ok");
 
     // no unhealthy food
     if (determine_chunk_effect(mons_corpse_effect(defender.type)) != CE_CLEAN)
@@ -656,7 +662,7 @@ static void _hydra_consider_devouring(monster &defender)
     dprf("size ok");
 
     // chow down.
-    _hydra_devour(defender);
+    _devour(defender);
 }
 
 /**
@@ -667,11 +673,14 @@ static void _hydra_consider_devouring(monster &defender)
  */
 bool melee_attack::handle_phase_killed()
 {
-    if (attacker->is_player() && (you.form == TRAN_HYDRA || you.form == TRAN_DRAGON)
+    if (attacker->is_player()
+        && (you.form == TRAN_HYDRA
+            || you.form == TRAN_DRAGON
+            || you.species == SP_SHADOW_GIANT)
         && defender->is_monster() // better safe than sorry
         && defender->type != MONS_NO_MONSTER) // already reset
     {
-        _hydra_consider_devouring(*defender->as_monster());
+        _consider_devouring(*defender->as_monster());
     }
 
     // Wyrmbane needs to be notified of deaths, including ones due to aux
