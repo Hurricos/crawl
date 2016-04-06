@@ -76,10 +76,10 @@ enum class mutflag
     JIYVA   = 1 << 2, // jiyva-only muts
     QAZLAL  = 1 << 3, // qazlal wrath
     XOM     = 1 << 4, // xom being xom
-
-    LAST    = XOM
+    BEAST   = 1 << 5, // bestial expression
+    LAST    = BEAST
 };
-DEF_BITFIELD(mutflags, mutflag, 4);
+DEF_BITFIELD(mutflags, mutflag, 5);
 COMPILE_CHECK(mutflags::exponent(mutflags::last_exponent) == mutflag::LAST);
 
 #include "mutation-data.h"
@@ -865,6 +865,11 @@ static mutation_type _get_random_xom_mutation()
     return mutat;
 }
 
+static mutation_type _get_random_beastly_mutation()
+{
+    return x_chance_in_y(1, 2) ? MUT_CLAWS : _get_mut_with_use(mutflag::BEAST);
+}
+
 static mutation_type _get_random_qazlal_mutation()
 {
     return _get_mut_with_use(mutflag::QAZLAL);
@@ -1315,7 +1320,15 @@ bool mutate(mutation_type which_mutation, const string &reason, bool failMsg,
     case RANDOM_GOOD_MUTATION:
     case RANDOM_BAD_MUTATION:
     case RANDOM_CORRUPT_MUTATION:
-        mutat = _get_random_mutation(which_mutation);
+        // (Simian) bestial expression.
+        if (player_mutation_level(MUT_BESTIAL_EXPRESSION, false)
+            && x_chance_in_y(1, 2)
+            && mutclass == MUTCLASS_NORMAL)
+        {
+            mutat = _get_random_beastly_mutation();
+        }
+        else
+            mutat = _get_random_mutation(which_mutation);
         break;
     case RANDOM_XOM_MUTATION:
         mutat = _get_random_xom_mutation();

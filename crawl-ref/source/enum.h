@@ -3624,6 +3624,7 @@ enum mutation_type
     MUT_ACUTE_VISION,
     MUT_AGILE,
     MUT_BERSERK,
+    MUT_BESTIAL_EXPRESSION,
     MUT_BLINK,
     MUT_BLURRY_VISION,
 #if TAG_MAJOR_VERSION == 34
@@ -4185,6 +4186,7 @@ enum species_type
     SP_GARGOYLE,
     SP_FORMICID,
     SP_VINE_STALKER,
+    SP_SIMIAN,
     NUM_SPECIES,
 
     SP_UNKNOWN  = 100,
