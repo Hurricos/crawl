@@ -20,6 +20,7 @@
 #include "libutil.h"
 #include "macro.h"
 #include "message.h"
+#include "misc.h" // frombool
 #include "mutation.h"
 #include "ng-setup.h"
 #include "output.h"
@@ -102,7 +103,7 @@ species_type find_species_from_string(const string &species)
     return sp;
 }
 
-xom_event_type find_xom_event_from_string(const string &event_name)
+static xom_event_type _find_xom_event_from_string(const string &event_name)
 {
     string spec = lowercase_string(event_name);
 
@@ -1137,16 +1138,17 @@ void wizard_xom_acts()
 
     if (specs[0] == '\0')
     {
-        xom_event_type result;
-        if (you_worship(GOD_XOM))
-            result = xom_acts(severity);
-        else
-            result = xom_acts(coinflip(), severity);
+        const maybe_bool nice = you_worship(GOD_XOM) ? MB_MAYBE :
+                                frombool(coinflip());
+        const xom_event_type result = xom_acts(severity, nice);
         dprf("Xom did '%s'.", xom_effect_to_name(result).c_str());
+#ifndef DEBUG_DIAGNOSTICS
+        UNUSED(result);
+#endif
         return;
     }
 
-    xom_event_type event = find_xom_event_from_string(specs);
+    xom_event_type event = _find_xom_event_from_string(specs);
     if (event == XOM_DID_NOTHING)
     {
         dprf("That action doesn't seem to exist!");
