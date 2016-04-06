@@ -1341,7 +1341,7 @@ bool mutate(mutation_type which_mutation, const string &reason, bool failMsg,
     // (Simian) bestial expression.
     if (player_mutation_level(MUT_BESTIAL_EXPRESSION, false)
         && mutclass == MUTCLASS_NORMAL
-        && conflip())
+        && coinflip())
     {
         mutat = _get_random_beastly_mutation();
     }
