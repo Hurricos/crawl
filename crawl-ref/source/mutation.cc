@@ -445,6 +445,8 @@ string describe_mutations(bool center_title)
             result += "You are small and have problems with some larger weapons.\n";
             break;
         case SIZE_LARGE:
+        case SIZE_BIG:
+        case SIZE_GIANT:
             result += "You are too large for most types of armour.\n";
             break;
         default:
