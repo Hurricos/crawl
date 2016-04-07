@@ -662,6 +662,7 @@ large rock
 A very large and very heavy stone. {{
     if you.race() == "Ogre"
        or you.race() == "Troll"
+       or you.race() == "Shadow Giant"
    then
        return ""
    else
@@ -677,6 +678,7 @@ A large piece of wood and metal, to be strapped on one arm for defence. {{
        or you.race() == "Naga"
        or you.race() == "Centaur"
        or you.race() == "Formicid"
+       or you.race() == "Shadow Giant"
     then
         return "It looks like it would fit you well."
     else
